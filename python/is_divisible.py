@@ -4,6 +4,7 @@ import random
 
 # NOTE: Tested typing python function parameters
 
+
 def main():
 
     random_numbers: [int] = []
@@ -12,7 +13,9 @@ def main():
 
     print(is_divisible_for_given_amount_numbers(random_numbers, 2, 3, 5))
 
-def is_divisible_for_given_amount_numbers(random_numbers_array: [int], *argv: int):
+
+def is_divisible_for_given_amount_numbers(random_numbers_array: [int],
+                                          *argv: int):
     """
     Args:
         random_numbers_array (int[]): Array of random numbers
@@ -21,7 +24,7 @@ def is_divisible_for_given_amount_numbers(random_numbers_array: [int], *argv: in
     Returns:
         Amount of numbers that were divisible for all the given *argv numbers
     """
-    
+
     is_divisble_amount: int = 0
 
     for random_number in random_numbers_array:
@@ -42,7 +45,8 @@ def is_divisible_for_given_amount_numbers(random_numbers_array: [int], *argv: in
 def generate_random_numbers(amount: int):
     """
     Args:
-        amount (int): Amount of numbers to be generated between 0 to 1000 to array
+        amount (int): Amount of numbers to be generated between
+        0 to 1000 to array
 
     Returns:
         Array of generated random numbers
@@ -53,6 +57,7 @@ def generate_random_numbers(amount: int):
         random_numbers.append(random.randrange(0, 1000))
 
     return random_numbers
+
 
 if __name__ == "__main__":
     main()
