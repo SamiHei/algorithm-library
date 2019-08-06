@@ -8,25 +8,25 @@ from binary_tree import BinaryTree
 def main():
 
     # This is for testing
-    node1 = Node(1)
-    tree = BinaryTree(node1)
-
+    node6 = Node(6)
+    tree = BinaryTree(node6)
+    tree.add_node_in_order(4)
     tree.add_node_in_order(2)
+    tree.add_node_in_order(1)
     tree.add_node_in_order(3)
+    tree.add_node_in_order(5)
+    tree.add_node_in_order(7)
 
-    tree.add_node_in_order(0)
-
-    tree.add_node_in_order(10)
-    tree.add_node_in_order(8)
-    tree.add_node_in_orderw(7)
-
-    print(tree.root.right.key)
-    print(tree.root.right.right.key)
+    print(tree.root.key)
     print(tree.root.left.key)
-    print(tree.root.right.right.right.key)
+    print(tree.root.left.left.key)
+    print(tree.root.left.left.left.key)
+    print(tree.root.left.left.right.key)
+    print(tree.root.left.right.key)
+    print(tree.root.right.key)
+    print("===================")
 
-    print(tree.root.right.right.right.left.key)
-    print(tree.root.right.right.right.left.left.key)
+    tree.print_tree_pre_order()
 
 
 if __name__ == "__main__":
