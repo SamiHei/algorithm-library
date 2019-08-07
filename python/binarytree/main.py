@@ -19,10 +19,15 @@ def main():
     tree.add_node_in_order(2)
     tree.add_node_in_order(4)
     tree.add_node_in_order(5)
+    tree.add_node_in_order(11)
 
     print(tree.root.left.right.left.key)
 
-    print(tree.print_tree_pre_order(node10))
+    print(tree.traverse_tree_pre_order(node10))
+
+    print(tree.traverse_tree_in_order(node10))
+
+    print(tree.traverse_tree_post_order(node10))
 
 
 if __name__ == "__main__":

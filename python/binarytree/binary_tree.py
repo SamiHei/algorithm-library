@@ -39,16 +39,53 @@ class BinaryTree:
         elif(latest_node.right and latest_node.key < node.key):
             self._helper_add_node(latest_node.right, node)
 
-    def print_tree_pre_order(self, root):
+    def traverse_tree_pre_order(self, root):
         """
-        Prints the tree's key values in preorder
+        Prints the tree's key values in pre-order
 
         Args:
         root (Node): tree's root node
+
+        Returns:
+        Array of node key values in pre-order
         """
         node_keys = []
         if root:
             node_keys.append(root.key)
             node_keys = node_keys + self.print_tree_pre_order(root.left)
             node_keys = node_keys + self.print_tree_pre_order(root.right)
+        return node_keys
+
+    def traverse_tree_in_order(self, root):
+        """
+        Prints the tree's key values in in-order
+
+        Args:
+        root (Node): tree's root node
+
+        Returns:
+        Array of node key values in in-order
+        """
+        node_keys = []
+        if root:
+            node_keys = node_keys + self.print_tree_in_order(root.left)
+            node_keys.append(root.key)
+            node_keys = node_keys + self.print_tree_in_order(root.right)
+        return node_keys
+
+    def traverse_tree_post_order(self, root):
+        """
+        Prints the tree's key values in post-order
+
+        Args:
+        root (Node): tree's root node
+
+        Returns:
+        Array of node key values in post-order
+        """
+        node_keys = []
+        if root:
+            node_keys = node_keys + self.print_tree_post_order(root.left)
+            node_keys = node_keys + self.print_tree_post_order(root.right)
+            node_keys.append(root.key)
         return node_keys

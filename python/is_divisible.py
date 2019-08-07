@@ -18,11 +18,11 @@ def is_divisible_for_given_amount_numbers(random_numbers_array: [int],
                                           *argv: int):
     """
     Args:
-        random_numbers_array (int[]): Array of random numbers
-        *argv (int): Values that the random numbers needs to divisible
+    random_numbers_array (int[]): Array of random numbers
+    *argv (int): Values that the random numbers needs to divisible
 
     Returns:
-        Amount of numbers that were divisible for all the given *argv numbers
+    Amount of numbers that were divisible for all the given *argv numbers
     """
 
     is_divisble_amount: int = 0
@@ -45,11 +45,11 @@ def is_divisible_for_given_amount_numbers(random_numbers_array: [int],
 def generate_random_numbers(amount: int):
     """
     Args:
-        amount (int): Amount of numbers to be generated between
-        0 to 1000 to array
+    amount (int): Amount of numbers to be generated between
+    0 to 1000 to array
 
     Returns:
-        Array of generated random numbers
+    Array of generated random numbers
     """
     random_numbers: [int] = []
 
