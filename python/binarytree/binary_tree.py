@@ -16,10 +16,10 @@ class BinaryTree:
         Args:
         key (int): Value for new node to be added
         """
-        if(self.root.left is not None and self.root.key >= key):
+        if(self.root.left and self.root.key >= key):
             latest_node = self.root.left
             self._helper_add_node(latest_node, Node(key))
-        elif(self.root.right is not None and self.root.key < key):
+        elif(self.root.right and self.root.key < key):
             latest_node = self.root.right
             self._helper_add_node(latest_node, Node(key))
         elif(self.root.left is None and self.root.key >= key):
@@ -34,25 +34,21 @@ class BinaryTree:
         elif(latest_node.right is None and latest_node.key < node.key):
             latest_node.right = node
             return
-        elif(latest_node.left is not None and latest_node.key >= node.key):
+        elif(latest_node.left and latest_node.key >= node.key):
             self._helper_add_node(latest_node.left, node)
-        elif(latest_node.right is not None and latest_node.key < node.key):
+        elif(latest_node.right and latest_node.key < node.key):
             self._helper_add_node(latest_node.right, node)
 
-    # TODO continue from here
-    def print_tree_pre_order(self):
-        print(self.root.key)
-        latest_node = self.root
-        if(latest_node.left is not None):
-            self._pre_order_helper(latest_node.left)
-        elif(latest_node.left is None and latest_node.right is not None):
-            self._pre_order_helper(latest_node.right)
+    def print_tree_pre_order(self, root):
+        """
+        Prints the tree's key values in preorder
 
-    def _pre_order_helper(self, latest_node):
-        print(latest_node.key)
-        if(latest_node.left is not None):
-            latest_node = latest_node.left
-            self._pre_order_helper(latest_node)
-        elif(latest_node.right is not None):
-            latest_node = latest_node.right
-            self._pre_order_helper(latest_node)
+        Args:
+        root (Node): tree's root node
+        """
+        node_keys = []
+        if root:
+            node_keys.append(root.key)
+            node_keys = node_keys + self.print_tree_pre_order(root.left)
+            node_keys = node_keys + self.print_tree_pre_order(root.right)
+        return node_keys
