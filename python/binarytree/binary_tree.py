@@ -26,9 +26,19 @@ class BinaryTree:
         elif(root.right is None and root.key < key):
             root.right = Node(key)
 
+    def delete_node(self, root, key):
+        """
+        Deletes node from the binary tree and sets the deleted node's children
+        nodes to continue from the previous node
+
+        Args:
+        root (Node): Root node of the binary tree
+        key (int): Value for new node to be added
+        """
+
     def traverse_tree_pre_order(self, root):
         """
-        Prints the tree's key values in pre-order
+        Traverses the tree's key values in pre-order
 
         Args:
         root (Node): tree's root node
@@ -45,7 +55,7 @@ class BinaryTree:
 
     def traverse_tree_in_order(self, root):
         """
-        Prints the tree's key values in in-order
+        Traverses the tree's key values in in-order
 
         Args:
         root (Node): tree's root node
@@ -62,7 +72,7 @@ class BinaryTree:
 
     def traverse_tree_post_order(self, root):
         """
-        Prints the tree's key values in post-order
+        Traverses the tree's key values in post-order
 
         Args:
         root (Node): tree's root node
