@@ -1,40 +1,69 @@
 #! /usr/bin/python3
 
-from node import Node
-
 
 class BinaryTree:
 
     def __init__(self, root):
         self.root = root
 
-    def add_node_in_order(self, root, key):
+    def add_node_in_order(self, root, new_node):
         """
         Adds new node with given value (key) to the correct spot in,
         binary tree (as in value order)
 
         Args:
         root (Node): Root node of the binary tree
-        key (int): Value for new node to be added
+        new_node (Node): New node to be added
         """
-        if(root.left and root.key >= key):
-            self.add_node_in_order(root.left, key)
-        elif(root.right and root.key < key):
-            self.add_node_in_order(root.right, key)
-        elif(root.left is None and root.key >= key):
-            root.left = Node(key)
-        elif(root.right is None and root.key < key):
-            root.right = Node(key)
+        if(root.left and root.key >= new_node.key):
+            self.add_node_in_order(root.left, new_node)
+        elif(root.right and root.key < new_node.key):
+            self.add_node_in_order(root.right, new_node)
+        elif(root.left is None and root.key >= new_node.key):
+            root.left = new_node
+        elif(root.right is None and root.key < new_node.key):
+            root.right = new_node
 
-    def delete_node(self, root, key):
+    def delete_node(self, root, key, previous_node=None):
         """
-        Deletes node from the binary tree and sets the deleted node's children
-        nodes to continue from the previous node
+        If node which to be deleted is in the left side of the binary tree,
+        this function deletes node from the binary tree and sets the deleted
+        node's right children (if not None) node to continue from the previous
+        node and adds the node's left children to the tree
+        using add_node_in_order function
+
+        If node which to be deleted is in the right side of the binary tree,
+        this function deletes node from the binary tree and sets the deleted
+        node's left children (if not None) node to continue from the previous
+        node and adds the node's right children to the tree
+        using add_node_in_order function
 
         Args:
         root (Node): Root node of the binary tree
-        key (int): Value for new node to be added
+        key (int): Value of the node which wanted to be deleted from the tree
+        previous_node (Node): Previous node of the handled one (default None)
         """
+        if(key == root.key):
+            if(root.right is not None and key == previous_node.left.key):
+                previous_node.left = root.right
+                self.add_node_in_order(previous_node.left, root.left)
+            elif(root.left is not None and key == previous_node.left.key):
+                previous_node.left = root.left
+            elif(root.left is not None and key == previous_node.right.key):
+                previous_node.right = root.left
+                self.add_node_in_order(previous_node.right, root.right)
+            else:
+                previous_node.right = root.right
+        elif(key < root.key and root.left is not None):
+            previous_node = root
+            print(previous_node.key)
+            self.delete_node(root.left, key, previous_node)
+        elif(key > root.key and root.right is not None):
+            previous_node = root
+            print(previous_node.key)
+            self.delete_node(root.right, key, previous_node)
+        else:
+            print("Node doesn't exist on the given tree!")
 
     def traverse_tree_pre_order(self, root):
         """
