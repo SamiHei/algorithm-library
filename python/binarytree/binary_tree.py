@@ -44,21 +44,21 @@ class BinaryTree:
         previous_node (Node): Previous node of the handled one (default None)
         """
         if(key == root.key):
-            if(root.right is not None and key == previous_node.left.key):
+            if(root.right and key == previous_node.left.key):
                 previous_node.left = root.right
                 self.add_node_in_order(previous_node.left, root.left)
-            elif(root.left is not None and key == previous_node.left.key):
+            elif(root.left and key == previous_node.left.key):
                 previous_node.left = root.left
-            elif(root.left is not None and key == previous_node.right.key):
+            elif(root.left and key == previous_node.right.key):
                 previous_node.right = root.left
                 self.add_node_in_order(previous_node.right, root.right)
             else:
                 previous_node.right = root.right
-        elif(key < root.key and root.left is not None):
+        elif(key < root.key and root.left):
             previous_node = root
             print(previous_node.key)
             self.delete_node(root.left, key, previous_node)
-        elif(key > root.key and root.right is not None):
+        elif(key > root.key and root.right):
             previous_node = root
             print(previous_node.key)
             self.delete_node(root.right, key, previous_node)
