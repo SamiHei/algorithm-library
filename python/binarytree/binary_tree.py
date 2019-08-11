@@ -78,9 +78,9 @@ class BinaryTree:
         """
         global searched_node
 
-        if(key < root.key and root.left is not None):
+        if(key < root.key and root.left):
             self.search_node(root.left, key)
-        elif(key > root.key and root.right is not None):
+        elif(key > root.key and root.right):
             self.search_node(root.right, key)
         elif(key == root.key):
             searched_node = root
