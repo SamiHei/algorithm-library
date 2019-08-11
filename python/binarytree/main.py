@@ -33,12 +33,21 @@ def main():
 
     tree.delete_node(node10, 9)
 
+    tree.delete_node(node10, 123)
+
     print(tree.traverse_tree_pre_order(node10))
 
     print(tree.traverse_tree_in_order(node10))
 
     print(tree.traverse_tree_post_order(node10))
 
+    new_node = tree.search_node(node10, 8)
+    if(new_node):
+        print(new_node.key)
+        print(new_node.left.key)
+        print(new_node.left.left.right.key)
+
+    new_node = tree.search_node(node10, 9)
 
 if __name__ == "__main__":
     main()

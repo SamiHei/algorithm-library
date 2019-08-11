@@ -63,7 +63,32 @@ class BinaryTree:
             print(previous_node.key)
             self.delete_node(root.right, key, previous_node)
         else:
-            print("Node doesn't exist on the given tree!")
+            print("Node with the given key value doesn't exist!")
+
+    def search_node(self, root, key):
+        """
+        Searches and returns the Node object with the given key value
+
+        Args:
+        root (Node): tree's root node
+        key (int): Key value of the searched Node
+
+        Returns:
+        Node object
+        """
+        global searched_node
+
+        if(key < root.key and root.left is not None):
+            self.search_node(root.left, key)
+        elif(key > root.key and root.right is not None):
+            self.search_node(root.right, key)
+        elif(key == root.key):
+            searched_node = root
+        else:
+            searched_node = None
+            print("Searched node doesn't exist!")
+
+        return searched_node
 
     def traverse_tree_pre_order(self, root):
         """
