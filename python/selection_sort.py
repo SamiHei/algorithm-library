@@ -21,10 +21,9 @@ def selection_sort(array):
         for j in range(i+1, array_length):
             if(array[j] < smallest_value):
                 smallest_value = array[j]
-                smallest_value_index = array.index(smallest_value)
+                smallest_value_index = j
                
-        if(array[smallest_value_index] < array[i]):
-           array[i], array[smallest_value_index] = array[smallest_value_index], array[i]
+        array[i], array[smallest_value_index] = array[smallest_value_index], array[i]
 
     return array
 
