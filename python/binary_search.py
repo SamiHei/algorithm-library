@@ -19,21 +19,21 @@ def binary_search(array, search_value):
     (If not found returns -1)
     """
     array_length = len(array)
-    helper_index = 0
+    index = 0
     while(array_length > 1):
         if(search_value < array[array_length//2] and array_length > 1):
-            helper_index += binary_search(array[:array_length//2], search_value)
+            index += binary_search(array[:array_length//2], search_value)
         elif(search_value > array[array_length//2] and array_length > 1):
-            helper_index = binary_search(array[array_length//2:], search_value)
-            helper_index += array_length//2
+            index = binary_search(array[array_length//2:], search_value)
+            index += array_length//2
         elif(search_value == array[array_length//2]):
-            helper_index += array_length//2
-            return helper_index
+            index += array_length//2
+            return index
         break
 
-    if(search_value != array[helper_index]):
+    if(search_value != array[index]):
         return -1
-    return helper_index
+    return index
 
 
 if __name__ == "__main__":
