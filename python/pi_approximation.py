@@ -56,7 +56,7 @@ def calculate_pi_approximation(amount_of_points):
             points_inside_circle += 1
 
     # Calculate the pi using the formula 4k/n
-    result = (4 * points_inside_circle) / len(rand_generated_points)
+    result = (4 * points_inside_circle) / amount_of_points
     return result
     
 
